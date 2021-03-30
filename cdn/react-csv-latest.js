@@ -144,9 +144,10 @@ var CSVLink = function (_React$Component) {
             data = _props2.data,
             headers = _props2.headers,
             separator = _props2.separator,
-            uFEFF = _props2.uFEFF;
+            uFEFF = _props2.uFEFF,
+            enclosingCharacter = _props2.enclosingCharacter;
 
-        this.setState({ href: this.buildURI(data, uFEFF, headers, separator) });
+        this.setState({ href: this.buildURI(data, uFEFF, headers, separator, enclosingCharacter) });
       }
     }
   }, {
@@ -323,7 +324,7 @@ var getHeaderValue = exports.getHeaderValue = function getHeaderValue(property, 
 };
 
 var elementOrEmpty = exports.elementOrEmpty = function elementOrEmpty(element) {
-  return element || element === 0 ? element : '';
+  typeof element === 'undefined' || element === null ? '' : element;
 };
 
 var joiner = exports.joiner = function joiner(data) {
